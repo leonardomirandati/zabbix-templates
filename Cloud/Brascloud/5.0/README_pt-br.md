@@ -8,6 +8,7 @@
 
 - **Você precisa configurar as macros para utilizar o template.**
 - Monitore as faturas da sua conta Brascloud:
+- Suportado a partir do Zabbix 4.0
  - Obtenha o valor e status da fatura e atual e a anterior;
 
 ## Macros usadas
