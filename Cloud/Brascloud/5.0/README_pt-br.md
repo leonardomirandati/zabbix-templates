@@ -28,11 +28,11 @@ Não possui.
 ## Itens coletados
 | Nome | Descrição | Tipo | Chave ou informação adicional |
 | ------ | ------ | ------ | ------ |
-| Brascloud Invoice Monitoring API | Master Item - Origin Request | HTTP Agent | id.[{$BRASCLOUD_ACCOUNT}] |
-| currentCost | Invoice Current Cost (R$) | Dependent item | currentCost |
-| pastCost | Invoice Past Cost (R$) | Dependent item | pastCost |
-| statusCurrent | Invoice Current Status (DRAFT)| Dependent item | statusCurrent |
-| statusPast | Invoice Past Status (PAID/DUE/OVER_DUE) | Dependent item | statusPast |
+| Brascloud Invoice Monitoring API | Master Item - Origem da Requisição | Agente HTTP | id.[{$BRASCLOUD_ACCOUNT}] |
+| currentCost | Invoice Current Cost (R$) | Item Dependente | currentCost |
+| pastCost | Invoice Past Cost (R$) | Item Dependente | pastCost |
+| statusCurrent | Invoice Current Status (DRAFT)| Item Dependente | statusCurrent |
+| statusPast | Invoice Past Status (PAID/DUE/OVER_DUE) | Item Dependente | statusPast |
 
 ## Triggers
 | Nome | Descrição | Espressão | Severidade |
