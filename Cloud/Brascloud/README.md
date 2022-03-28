@@ -39,4 +39,4 @@ Não possui.
 | ------ | ------ | ------ | ------ |
 | {$BRASCLOUD_ACCOUNT} is overdue invoice | - | **Expression:**  {Template Brascloud Invoice:statusPast.str(OVER_DUE)}=1 **Recovery Expression:** {Template Brascloud Invoice:statusPast.str(OVER_DUE)}=0 | High |
 
-Support/Contact/Suggestions: Leonardo Miranda (leonardomiranda.ti@outlook.com)
+Suporte/Contato/Sugestões: Leonardo Miranda (leonardomiranda.ti@outlook.com)
