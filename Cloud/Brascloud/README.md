@@ -29,10 +29,10 @@ Não possui.
 | Nome | Descrição | Tipo | Chave ou informação adicional |
 | ------ | ------ | ------ | ------ |
 | Brascloud Invoice Monitoring API | Master Item - Origem da Requisição | Agente HTTP | id.[{$BRASCLOUD_ACCOUNT}] |
-| currentCost | Invoice Current Cost (R$) | Item Dependente | currentCost |
-| pastCost | Invoice Past Cost (R$) | Item Dependente | pastCost |
-| statusCurrent | Invoice Current Status (DRAFT)| Item Dependente | statusCurrent |
-| statusPast | Invoice Past Status (PAID/DUE/OVER_DUE) | Item Dependente | statusPast |
+| currentCost | Custo Fatural Atual (R$) | Item Dependente | currentCost |
+| pastCost | Custo Fatural Anterior (R$) | Item Dependente | pastCost |
+| statusCurrent | Status Fatura Atual (DRAFT)| Item Dependente | statusCurrent |
+| statusPast | Status Fatura Anterior (PAID/DUE/OVER_DUE) | Item Dependente | statusPast |
 
 ## Triggers
 | Nome | Descrição | Espressão | Severidade |
