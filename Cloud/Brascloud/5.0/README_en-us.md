@@ -7,6 +7,7 @@
 ## Overview
 
 - **You need to set the macros according to your account.**
+- Supported from Zabbix 4.0
 - Shows different operating values of your Brascloud account:
  - Current and previous month invoice status and cost;
 
