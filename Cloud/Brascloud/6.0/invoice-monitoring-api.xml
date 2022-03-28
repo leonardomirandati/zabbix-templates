@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>6.0</version>
-    <date>2022-03-28T12:27:44Z</date>
+    <date>2022-03-28T21:15:27Z</date>
     <groups>
         <group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
             <name>Templates</name>
         </group>
     </groups>
     <templates>
         <template>
+            <uuid>fe23e0ae79ae4fc3ba22c67eaf5908a8</uuid>
             <template>Template Brascloud Invoice</template>
             <name>Template Brascloud Invoice</name>
             <groups>
@@ -16,27 +18,15 @@
                     <name>Templates</name>
                 </group>
             </groups>
-            <applications>
-                <application>
-                    <name>Current Invoice</name>
-                </application>
-                <application>
-                    <name>Past Invoice</name>
-                </application>
-            </applications>
             <items>
                 <item>
+                    <uuid>3e3942efc68b4621a387b9740053f1fb</uuid>
                     <name>currentCost</name>
                     <type>DEPENDENT</type>
                     <key>currentCost</key>
                     <delay>0</delay>
                     <value_type>FLOAT</value_type>
                     <units>BRL</units>
-                    <applications>
-                        <application>
-                            <name>Current Invoice</name>
-                        </application>
-                    </applications>
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
@@ -54,8 +44,15 @@
                     <master_item>
                         <key>id.[{$BRASCLOUD_ACCOUNT}]</key>
                     </master_item>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Current Invoice</value>
+                        </tag>
+                    </tags>
                 </item>
                 <item>
+                    <uuid>32ea25b25ca94cf3840f99ff7dc21f9d</uuid>
                     <name>Brascloud Invoice Monitoring API</name>
                     <type>HTTP_AGENT</type>
                     <key>id.[{$BRASCLOUD_ACCOUNT}]</key>
@@ -91,17 +88,13 @@
                     <output_format>JSON</output_format>
                 </item>
                 <item>
+                    <uuid>7f573fee89cf4e62aee0a7cdee3aa92d</uuid>
                     <name>pastCost</name>
                     <type>DEPENDENT</type>
                     <key>pastCost</key>
                     <delay>0</delay>
                     <value_type>FLOAT</value_type>
                     <units>BRL</units>
-                    <applications>
-                        <application>
-                            <name>Past Invoice</name>
-                        </application>
-                    </applications>
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
@@ -119,19 +112,21 @@
                     <master_item>
                         <key>id.[{$BRASCLOUD_ACCOUNT}]</key>
                     </master_item>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Past Invoice</value>
+                        </tag>
+                    </tags>
                 </item>
                 <item>
+                    <uuid>363e0bbed2c84b6e98e7a08b658d72fe</uuid>
                     <name>statusCurrent</name>
                     <type>DEPENDENT</type>
                     <key>statusCurrent</key>
                     <delay>0</delay>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
-                    <applications>
-                        <application>
-                            <name>Current Invoice</name>
-                        </application>
-                    </applications>
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
@@ -149,19 +144,21 @@
                     <master_item>
                         <key>id.[{$BRASCLOUD_ACCOUNT}]</key>
                     </master_item>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Current Invoice</value>
+                        </tag>
+                    </tags>
                 </item>
                 <item>
+                    <uuid>2e50feeeb3fd4b41a6d3c995d9961ab8</uuid>
                     <name>statusPast</name>
                     <type>DEPENDENT</type>
                     <key>statusPast</key>
                     <delay>0</delay>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
-                    <applications>
-                        <application>
-                            <name>Past Invoice</name>
-                        </application>
-                    </applications>
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
@@ -175,15 +172,29 @@
                                 <parameter>[&quot; &quot;]</parameter>
                             </parameters>
                         </step>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter>PAID</parameter>
+                                <parameter>OVER_DUE</parameter>
+                            </parameters>
+                        </step>
                     </preprocessing>
                     <master_item>
                         <key>id.[{$BRASCLOUD_ACCOUNT}]</key>
                     </master_item>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Past Invoice</value>
+                        </tag>
+                    </tags>
                     <triggers>
                         <trigger>
-                            <expression>{str(OVER_DUE)}=1</expression>
+                            <uuid>fc6dcb25a7594e5badda30c680bffbe7</uuid>
+                            <expression>find(/Template Brascloud Invoice/statusPast,,&quot;like&quot;,&quot;OVER_DUE&quot;)=1</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>{str(OVER_DUE)}=0</recovery_expression>
+                            <recovery_expression>find(/Template Brascloud Invoice/statusPast,,&quot;like&quot;,&quot;OVER_DUE&quot;)=0</recovery_expression>
                             <name>{$BRASCLOUD_ACCOUNT} is overdue invoice</name>
                             <priority>HIGH</priority>
                             <type>MULTIPLE</type>
